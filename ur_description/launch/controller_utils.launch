@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+  <rosparam file="$(find ur_description)/config/joint_state_controller.yaml" command="load"/>
+
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen"  args="joint_state_controller 
+shoulder_pan_joint_position_controller 
+shoulder_lift_joint_position_controller 
+elbow_joint_position_controller 
+wrist_1_joint_position_controller 
+wrist_2_joint_position_controller 
+wrist_3_joint_position_controller"/>
+
+	
+  <!-- Robot state publisher -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+	
+  </node>
+</launch>

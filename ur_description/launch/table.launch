@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<launch>
+ 	<!-- overwriting these args -->
+        <arg name="debug" default="false" />
+        <arg name="gui" default="true" />
+        <arg name="pause" default="false" />
+        <arg name="world" default="$(find ur_description)/launch/ur5_world.world" />
+        <arg name="limited" default="true"/>
+	<arg name="sim" default="true" />
+	<arg name ="camera_name" default = "camera" />
+	<arg name ="frame_name" default = "frame"/>
+	<arg name = "link_name" default = "world"/>
+        <!-- include gazebo_ros launcher -->
+        <include file="$(find gazebo_ros)/launch/empty_world.launch">
+                <arg name="world_name" value="$(arg world)" />
+                <arg name="debug" value="$(arg debug)" />
+                <arg name="gui" value="$(arg gui)" />
+                <arg name="paused" value="$(arg pause)" />
+                <arg name="use_sim_time" value="true" />
+        </include>
+	
+	<node name="table" pkg="gazebo_ros" type="spawn_model" args="-file $(find ur_description)/urdf/table.urdf -urdf -model table" />
+</launch>
